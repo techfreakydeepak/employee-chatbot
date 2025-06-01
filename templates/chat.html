@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script defer src="{{ url_for('static', filename='chat_realtime.js') }}"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </div>
+    <h2>Chat with AI Assistant</h2>
+    <div id="message-list" class="message-list"></div>
+    <form id="chat-form">
+      <textarea id="message-input" rows="3" placeholder="Type your message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div id="loading-spinner" class="spinner-box" style="display: none;">
+      <div class="spinner"></div>
+      <small>Waiting for AI...</small>
+    </div>
+  </div>
+</body>
+</html>

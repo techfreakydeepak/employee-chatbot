@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </div>
+    <h2>Admin Dashboard</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Message</th>
+          <th>Sender</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for msg in messages %}
+        <tr>
+          <td>{{ msg.sender.email if msg.sender else msg.receiver.email }}</td>
+          <td>{{ msg.message }}</td>
+          <td>{{ 'AI' if msg.from_ai else 'User' }}</td>
+          <td>{{ msg.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

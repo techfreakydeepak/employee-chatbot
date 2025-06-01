@@ -1,0 +1,13 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+Flask-SocketIO
+python-dotenv
+openai
+requests
+
+werkzeug # for hashing the password
+# For development purposes
+Flask-Migrate
+# For testing purposes
+pytest
